@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodLovers.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodLovers.Persistence", "FoodLovers.Persistence\FoodLovers.Persistence.csproj", "{43ACBDF0-5571-4002-B8C4-8C106F4195D9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{6EE45E33-C576-48AC-98DA-B75C63EBBBBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodLovers.Common", "FoodLovers.Common\FoodLovers.Common.csproj", "{79B1C4D6-8672-44F2-9E88-5C5C9545F89E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{43ACBDF0-5571-4002-B8C4-8C106F4195D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43ACBDF0-5571-4002-B8C4-8C106F4195D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43ACBDF0-5571-4002-B8C4-8C106F4195D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79B1C4D6-8672-44F2-9E88-5C5C9545F89E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79B1C4D6-8672-44F2-9E88-5C5C9545F89E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79B1C4D6-8672-44F2-9E88-5C5C9545F89E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79B1C4D6-8672-44F2-9E88-5C5C9545F89E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +70,8 @@ Global
 		{52F7BC49-EDCD-40BA-8F16-ADF7A6ADBA79} = {0E1AEE03-4AC6-4898-AC1F-B57F612AB0BD}
 		{2E955705-C9FA-4E1E-9563-11C5E4CF2988} = {3B66A0BA-7567-4574-BA97-3F911788F45D}
 		{43ACBDF0-5571-4002-B8C4-8C106F4195D9} = {3B66A0BA-7567-4574-BA97-3F911788F45D}
+		{6EE45E33-C576-48AC-98DA-B75C63EBBBBE} = {372233EA-6713-4224-BE95-EC61B42814CD}
+		{79B1C4D6-8672-44F2-9E88-5C5C9545F89E} = {6EE45E33-C576-48AC-98DA-B75C63EBBBBE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5E20AEB1-2A32-4030-9491-839CEA914EB0}
