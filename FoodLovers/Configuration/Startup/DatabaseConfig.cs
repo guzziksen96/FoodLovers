@@ -12,11 +12,14 @@ namespace FoodLovers.Api.Configuration.Startup
 {
     public static class DatabaseConfig
     {
+        private const string ConnectionStringName = "FoodLoversDatabase";
         public static IServiceCollection RegisterContextDependencies(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<FoodLoversDbContext>(async (serviceProvider, options) =>
-                options.UseSqlServer(configuration.GetConnectionString("FoodLoversDatabase")));
-
+            {
+                options.UseSqlServer(configuration.GetConnectionString(ConnectionStringName));
+            });
+                
             return services;
         }
 
