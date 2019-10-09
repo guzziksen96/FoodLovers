@@ -8,20 +8,11 @@
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="FluentValidation" Version="8.5.0" />
     <PackageReference Include="MediatR" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FoodLovers.Domain\FoodLovers.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="FluentValidation">
-      <HintPath>..\..\..\..\Users\klaud\.nuget\packages\fluentvalidation\8.5.0\lib\netstandard2.0\FluentValidation.dll</HintPath>
-    </Reference>
-    <Reference Include="MediatR">
-      <HintPath>..\..\..\..\Users\klaud\.nuget\packages\mediatr\7.0.0\lib\netstandard2.0\MediatR.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

@@ -29,8 +29,6 @@ namespace FoodLovers.Persistence
             modelBuilder.Entity<RecipeIngredient>().HasKey(ri => new { ri.RecipeId, ri.IngredientId });
             modelBuilder.Entity<RecipeTag>().HasKey(ri => new { ri.RecipeId, ri.TagId });
         
-            //modelBuilder.SeedData(); 
-            //todo
         }
     }
 }

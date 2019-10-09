@@ -1,11 +1,12 @@
 ﻿using FoodLovers.Api.Configuration;
 using FoodLovers.Api.Configuration.Startup;
+using FoodLovers.Infrastructure.Elastic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FoodLovers
+namespace FoodLovers.Api
 {
     public class Startup
     {
@@ -24,6 +25,9 @@ namespace FoodLovers
             services.AddApiSettings();
             services.AddMediatRSettings();
             services.RegisterSwaggerDependencies();
+            //services.AddOptions();
+            services.Configure<ElasticConnectionSettings>(Configuration.GetSection("ElasticConnectionSettings"));
+            services.AddSingleton(typeof(ElasticClientProvider));
 
         }
 
