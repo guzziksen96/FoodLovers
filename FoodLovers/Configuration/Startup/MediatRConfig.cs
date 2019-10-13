@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using FoodLovers.Application.Infrastructure;
+using FoodLovers.Application.Scraper.Commands;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +18,7 @@ namespace FoodLovers.Api.Configuration.Startup
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
-            // services.AddMediatR(typeof(MyQuery).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(ScrapRecipesCommand).GetTypeInfo().Assembly);
 
             return services;
         }

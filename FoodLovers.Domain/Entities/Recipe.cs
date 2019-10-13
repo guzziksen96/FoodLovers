@@ -11,9 +11,8 @@ namespace FoodLovers.Domain.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Directions { get; set; }
-        public int PreparationTimeInMinutes { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public ICollection<RecipeIngredient> RecipeIngredient { get; set; }
+        public string PreparationTimeInMinutes { get; set; }
+        public ICollection<Ingredient> Ingredients { get; set; }
         public ICollection<RecipeTag> RecipeTag { get; set; }
     }
 }

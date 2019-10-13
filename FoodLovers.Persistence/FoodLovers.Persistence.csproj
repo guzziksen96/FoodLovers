@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FoodLovers.Application\FoodLovers.Application.csproj" />
+    <ProjectReference Include="..\FoodLovers.Domain\FoodLovers.Domain.csproj" />
   </ItemGroup>
 
 </Project>

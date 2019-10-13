@@ -19,9 +19,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FoodLovers.Application\FoodLovers.Application.csproj" />
     <ProjectReference Include="..\FoodLovers.Common\FoodLovers.Common.csproj" />
     <ProjectReference Include="..\FoodLovers.Infrastructure\FoodLovers.Infrastructure.csproj" />
     <ProjectReference Include="..\FoodLovers.Persistence\FoodLovers.Persistence.csproj" />
+    <ProjectReference Include="..\RecipeScarper\RecipeScarper.csproj" />
   </ItemGroup>
 
 </Project>

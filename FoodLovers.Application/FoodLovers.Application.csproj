@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FoodLovers.Domain\FoodLovers.Domain.csproj" />
+    <ProjectReference Include="..\FoodLovers.Persistence\FoodLovers.Persistence.csproj" />
+    <ProjectReference Include="..\RecipeScarper\RecipeScarper.csproj" />
   </ItemGroup>
 
 </Project>

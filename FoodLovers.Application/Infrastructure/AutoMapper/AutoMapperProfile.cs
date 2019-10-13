@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 
 namespace FoodLovers.Application.Infrastructure.AutoMapper
@@ -14,12 +12,6 @@ namespace FoodLovers.Application.Infrastructure.AutoMapper
         {
             LoadStandardMappings();
             LoadCustomMappings();
-            LoadConverters();
-        }
-
-        private void LoadConverters()
-        {
-
         }
 
         private void LoadStandardMappings()
