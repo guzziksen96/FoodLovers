@@ -42,7 +42,7 @@ namespace FoodLovers.Application.Scraper.Services
 
             //var scrapedRecipes = new List<RecipeModel> {scrapedRecipe};
 
-            var recipes = _mapper.Map<ICollection<Recipe>>(scrapedRecipes);
+            var recipes = _mapper.Map<ICollection<Domain.Entities.Recipe>>(scrapedRecipes);
             
            
             _context.Recipes.AddRange(recipes);

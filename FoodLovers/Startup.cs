@@ -25,7 +25,7 @@ namespace FoodLovers.Api
             services.AddApiSettings();
             services.AddMediatRSettings();
             services.RegisterSwaggerDependencies();
-            //services.AddOptions();
+            services.AddOptions();
             services.Configure<ElasticConnectionSettings>(Configuration.GetSection("ElasticConnectionSettings"));
             services.AddSingleton(typeof(ElasticClientProvider));
 

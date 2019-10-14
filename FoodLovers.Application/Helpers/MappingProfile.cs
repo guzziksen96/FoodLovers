@@ -14,7 +14,7 @@ namespace FoodLovers.Application.Helpers
         public MappingProfile()
         {
             CreateMap<Ingredient, IngredientModel>().ReverseMap();
-            CreateMap<Recipe, RecipeModel>().ReverseMap();
+            CreateMap<Domain.Entities.Recipe, RecipeModel>().ReverseMap();
         }
 
     }
