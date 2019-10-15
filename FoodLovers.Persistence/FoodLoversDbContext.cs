@@ -1,5 +1,4 @@
-﻿using System;
-using FoodLovers.Domain.Entities;
+﻿using FoodLovers.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodLovers.Persistence

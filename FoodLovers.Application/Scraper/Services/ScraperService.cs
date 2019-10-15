@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
-using FoodLovers.Domain.Entities;
 using FoodLovers.Persistence;
-using FoodLovers.Persistence.SeedData;
-using RecipeScarper.Scrapers;
 
 namespace FoodLovers.Application.Scraper.Services
 {

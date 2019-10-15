@@ -1,4 +1,4 @@
-﻿using System;using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using RecipeScarper.Models;
 using HtmlAgilityPack;
 using HtmlAgilityPack.CssSelectors.NetCore;

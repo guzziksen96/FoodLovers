@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using FoodLovers.Application.Recipe.Services;
-using FoodLovers.Application.Scraper.Services;
 using MediatR;
 
 namespace FoodLovers.Application.Recipe.Commands

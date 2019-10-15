@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RecipeScarper.Models
+﻿namespace RecipeScarper.Models
 {
     public class IngredientModel
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using FoodLovers.Application.Infrastructure;
 using FoodLovers.Application.Scraper.Commands;
 using MediatR;

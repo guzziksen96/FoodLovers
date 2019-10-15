@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FoodLovers.Application.Recipe.Services;
+﻿using FoodLovers.Application.Recipe.Services;
 using FoodLovers.Application.Scraper.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
