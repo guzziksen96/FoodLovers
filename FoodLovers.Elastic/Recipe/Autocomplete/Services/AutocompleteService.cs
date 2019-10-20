@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FoodLovers.Application.Recipe.Models;
+using FoodLovers.Elastic.Recipe.Autocomplete.Models;
 using FoodLovers.Infrastructure.Elastic;
 using Nest;
 
-namespace FoodLovers.Application.Recipe.Services
+namespace FoodLovers.Elastic.Recipe.Autocomplete.Services
 {
     public class AutocompleteService : IAutocompleteService
     {
@@ -20,7 +20,7 @@ namespace FoodLovers.Application.Recipe.Services
         {
             var createIndexDescriptor = new CreateIndexDescriptor(indexName)
                 .Mappings(ms => ms
-                    .Map<RecipeElasticModel>(m => m
+                    .Map<RecipeModel>(m => m
                         .AutoMap()
                         .Properties(ps => ps
                             .Completion(c => c
@@ -37,14 +37,14 @@ namespace FoodLovers.Application.Recipe.Services
             return createIndexResponse.IsValid;
         }
 
-        public async Task IndexAsync(string indexName, List<RecipeElasticModel> recipes)
+        public async Task IndexAsync(string indexName, List<RecipeModel> recipes)
         {
             await _elasticClient.IndexManyAsync(recipes, indexName);
         }
 
         public async Task<RecipeSuggestResponse> SuggestAsync(string indexName, string query)
         {
-            ISearchResponse<RecipeElasticModel> searchResponse = await _elasticClient.SearchAsync<RecipeElasticModel>(s => s
+            ISearchResponse<RecipeModel> searchResponse = await _elasticClient.SearchAsync<RecipeModel>(s => s
                 .Index(indexName)
                 .Suggest(su => su
                     .Completion("suggestions", c => c

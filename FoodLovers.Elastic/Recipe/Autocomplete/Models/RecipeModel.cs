@@ -1,9 +1,10 @@
 ﻿using Nest;
 
-namespace FoodLovers.Application.Recipe.Models
+namespace FoodLovers.Elastic.Recipe.Autocomplete.Models
 {
-    public class RecipeElasticModel
+    public class RecipeModel
     {
+       // [Text(Name = "name")]
         public string Name { get; set; }
         public CompletionField Suggest { get; set; }
     }

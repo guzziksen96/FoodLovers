@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FoodLovers.Application.Recipe.Models
+namespace FoodLovers.Elastic.Recipe.Autocomplete.Models
 {
     public class RecipeSuggestResponse
     {

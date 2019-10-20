@@ -1,5 +1,5 @@
-﻿using FoodLovers.Application.Recipe.Services;
-using FoodLovers.Application.Scraper.Services;
+﻿using FoodLovers.Application.Scraper.Services;
+using FoodLovers.Elastic.Recipe.Autocomplete.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
