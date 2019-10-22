@@ -1,6 +1,11 @@
-﻿using FoodLovers.Infrastructure.Elastic;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using FoodLovers.Domain.Entities;
+using FoodLovers.Elastic.Recipe.Search.Services;
+using FoodLovers.Infrastructure.Elastic;
 using Microsoft.AspNetCore.Mvc;
 using Nest;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace FoodLovers.Api.Controllers
 {
@@ -8,25 +13,20 @@ namespace FoodLovers.Api.Controllers
     [ApiController]
     public class SearchController : BaseController
     {
-        private readonly ElasticClient _elasticClient;
+        private readonly ISearchService _searchService;
 
-        public SearchController(ElasticClientProvider provider)
+        public SearchController(ISearchService searchService)
         {
-            _elasticClient = provider.Client;
+            _searchService = searchService;
         }
 
-        //[HttpPost]
-        //[SwaggerOperation("ElasticSearch Index")]
-        //public IActionResult Index(string query, ICollection<string> filters)
-        //{
-        //    var search = new SearchDescriptor<Recipe>()
-        //        .Query(qu => qu
-        //            .QueryString(queryString => queryString
-        //                .Query(query)));
-
-        //    var result = _elasticClient.Search<Recipe>(search);
-
-        //    return Ok(result);
-        //}
+        [HttpPost("/index")]
+        [SwaggerOperation("Create ElasticSearch Index")]
+        public async Task<IActionResult> CreateIndex()
+        {
+            var indexName = "recipes";
+            var result = await _searchService.CreateIndexAsync(indexName);
+            return Ok(result);
+        }
     }
 }
