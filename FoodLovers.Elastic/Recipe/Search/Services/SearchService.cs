@@ -51,5 +51,41 @@ namespace FoodLovers.Elastic.Recipe.Search.Services
             //var termsAggregation = searchResponse.Aggregations.Terms("prep_time");
             return _mapper.Map<IEnumerable<RecipeSearchModel>>(recipe); 
         }
+
+        [Obsolete]
+        public async Task<bool> CreateIndexAsync(string indexName)
+        {
+            var indexDescriptor = new CreateIndexDescriptor(indexName)
+                .Mappings(ms => ms
+                    .Map<RecipeSearchModel>(m => m.AutoMap()));
+
+            if (_elasticClient.Indices.Exists(indexName.ToLowerInvariant()).Exists)
+            {
+                _elasticClient.Indices.Delete(indexName.ToLowerInvariant());
+            }
+
+            var createIndexResponse = await _elasticClient.Indices.CreateAsync(indexDescriptor);
+
+            return createIndexResponse.IsValid;
+        }
+
+        public async Task IndexAsync(string indexName, List<RecipeSearchModel> recipes)
+        {
+            await _elasticClient.IndexManyAsync(recipes, indexName);
+        }
+
+        //public async Task<SearchResult> SearchAsync2(string query, int page, int pageSize)
+        //{
+        //    var result = await _elasticClient.SearchAsync<RecipeSearchModel>(x => x	
+        //        .Query(q => q				
+        //            .MultiMatch(mp => mp			
+        //                .Query(query)			
+        //                .Fields(f => f			
+        //                    .Fields(f1 => f1.Name, f2 => f2.Directions))))
+        //        .From(page - 1)				
+        //        .Size(pageSize));           
+
+
+        //}
     }
 }
