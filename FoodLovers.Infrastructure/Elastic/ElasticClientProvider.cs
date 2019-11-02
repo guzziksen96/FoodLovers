@@ -1,5 +1,4 @@
 ﻿using System;
-using FoodLovers.Domain.Entities;
 using Microsoft.Extensions.Options;
 using Nest;
 

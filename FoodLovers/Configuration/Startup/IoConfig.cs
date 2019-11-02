@@ -1,6 +1,7 @@
 ﻿using FoodLovers.Application.Scraper.Services;
 using FoodLovers.Elastic.Recipe.Autocomplete.Services;
 using FoodLovers.Elastic.Recipe.Search.Services;
+using FoodLovers.Elastic.Sync.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +15,7 @@ namespace FoodLovers.Api.Configuration
             services.AddScoped<IScraperService, ScraperService>();
             services.AddScoped<IAutocompleteService, AutocompleteService>();
             services.AddScoped<ISearchService, SearchService>();
+            services.AddScoped<ISyncService, SyncService>();
             
             return services;
         }

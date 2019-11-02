@@ -11,5 +11,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FoodLovers.Infrastructure\FoodLovers.Infrastructure.csproj" />
+    <ProjectReference Include="..\FoodLovers.Persistence\FoodLovers.Persistence.csproj" />
   </ItemGroup>
 </Project>

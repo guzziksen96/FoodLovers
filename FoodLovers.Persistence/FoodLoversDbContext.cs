@@ -21,7 +21,13 @@ namespace FoodLovers.Persistence
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(FoodLoversDbContext).Assembly);
 
             modelBuilder.Entity<RecipeTag>().HasKey(ri => new { ri.RecipeId, ri.TagId });
-        
+
+            modelBuilder.Entity<Recipe>()
+                .HasMany<RecipeTag>(r => r.RecipeTag);
+
+            modelBuilder.Entity<Recipe>()
+                .HasMany(r => r.Ingredients);
+
         }
     }
 }
