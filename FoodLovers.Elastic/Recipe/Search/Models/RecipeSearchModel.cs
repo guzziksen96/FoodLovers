@@ -12,7 +12,7 @@ namespace FoodLovers.Elastic.Recipe.Search.Models
         public string Tags { get; set; }
 
         [Nested]
-        public List<string> Ingredients { get; set; }
+        public List<IngredientSearchModel> Ingredients { get; set; }
 
     }
 }

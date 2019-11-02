@@ -20,7 +20,7 @@ namespace FoodLovers.Api.Controllers
             _searchService = searchService;
         }
 
-        [HttpPost("/index")]
+        [HttpPost("index")]
         [SwaggerOperation("Create ElasticSearch Index")]
         public async Task<IActionResult> CreateIndex()
         {
