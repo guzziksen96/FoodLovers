@@ -14,7 +14,7 @@ namespace FoodLovers.Api.Controllers
     public class SearchController : BaseController
     {
         private readonly ISearchService _searchService;
-
+        private readonly string indexName = "recipes";
         public SearchController(ISearchService searchService)
         {
             _searchService = searchService;
@@ -24,9 +24,17 @@ namespace FoodLovers.Api.Controllers
         [SwaggerOperation("Create ElasticSearch Index")]
         public async Task<IActionResult> CreateIndex()
         {
-            var indexName = "recipes";
             var result = await _searchService.CreateIndexAsync(indexName);
             return Ok(result);
         }
+
+        [HttpPost]
+        [SwaggerOperation("Search recipes multi match queries")]
+        public async Task<IActionResult> SearchRecipesMultiMatch(string query)
+        {
+            var result = await _searchService.SearchAsync(indexName, query);
+            return Ok(result);
+        }
+        
     }
 }

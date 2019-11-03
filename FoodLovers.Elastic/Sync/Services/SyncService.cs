@@ -17,7 +17,7 @@ namespace FoodLovers.Elastic.Sync.Services
         private readonly ElasticClient _elasticClient;
         private IMapper _mapper;
         private readonly FoodLoversDbContext _dbContext;
-
+        private readonly string indexName = "recipes";
         public SyncService(ElasticClientProvider provider, IMapper mapper, FoodLoversDbContext dbContext)
         {
             _elasticClient = provider.Client;
@@ -36,7 +36,7 @@ namespace FoodLovers.Elastic.Sync.Services
 
             var recepiesEsModel = _mapper.Map<List<RecipeSearchModel>>(recepies);
 
-            var request = new BulkRequest("recipes")
+            var request = new BulkRequest(indexName)
             {
                 Operations = new List<IBulkOperation>()
             };

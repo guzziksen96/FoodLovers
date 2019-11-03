@@ -21,35 +21,19 @@ namespace FoodLovers.Elastic.Recipe.Search.Services
         }
         public async Task<IEnumerable<RecipeSearchModel>> SearchAsync(string indexName, string query)
         {
-            var searchResponse = await _elasticClient.SearchAsync<Domain.Entities.Recipe>(s => s
-                .From(0)
-                .Size(10)
+            var searchResponse = await _elasticClient.SearchAsync<RecipeSearchModel>(s => s 
+                .Index(indexName)
+                //.Take(50)
+                //.From(0)
+                .Size(50)
                 .Query(q => q
-                    .Match(m => m
-                        .Field(f => f.Name)
+                    .MultiMatch(mp => mp
                         .Query(query)
-                    )
-                )
-            );
+                        .Fields(f => f
+                            .Fields(f1 => f1.Name, f2 => f2.Directions, f3 => f3.Ingredients, f4 => f4.Tags)))));
 
             var recipe = searchResponse.Documents;
 
-            //var searchResponse = await _elasticClient.SearchAsync<Domain.Entities.Recipe>(s => s
-            //    .Size(0)
-            //    .Query(q => q
-            //        .Match(m => m
-            //            .Field(f => f.Name)
-            //            .Query("Onion")
-            //        )
-            //    )
-            //    .Aggregations(a => a
-            //        .Terms("prep_time", ta => ta
-            //            .Field(f => f.PreparationTimeInMinutes)
-            //        )
-            //    )
-            //);
-
-            //var termsAggregation = searchResponse.Aggregations.Terms("prep_time");
             return _mapper.Map<IEnumerable<RecipeSearchModel>>(recipe);
         }
 
@@ -82,23 +66,5 @@ namespace FoodLovers.Elastic.Recipe.Search.Services
             return createIndexResponse.IsValid;
         }
 
-        public async Task IndexAsync(string indexName, List<RecipeSearchModel> recipes)
-        {
-            await _elasticClient.IndexManyAsync(recipes, indexName);
-        }
-
-        //public async Task<SearchResult> SearchAsync2(string query, int page, int pageSize)
-        //{
-        //    var result = await _elasticClient.SearchAsync<RecipeSearchModel>(x => x	
-        //        .Query(q => q				
-        //            .MultiMatch(mp => mp			
-        //                .Query(query)			
-        //                .Fields(f => f			
-        //                    .Fields(f1 => f1.Name, f2 => f2.Directions))))
-        //        .From(page - 1)				
-        //        .Size(pageSize));           
-
-
-        //}
     }
 }
