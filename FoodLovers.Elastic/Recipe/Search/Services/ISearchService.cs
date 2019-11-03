@@ -9,7 +9,7 @@ namespace FoodLovers.Elastic.Recipe.Search.Services
 {
     public interface ISearchService
     {
-        Task<IEnumerable<RecipeSearchModel>> SearchAsync(string indexName, string query);
+        Task<IEnumerable<RecipeSearchModel>> SearchAsync(string indexName, string searchTerm);
         Task<bool> CreateIndexAsync(string indexName);
     }
 }

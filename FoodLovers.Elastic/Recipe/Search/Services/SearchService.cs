@@ -19,7 +19,7 @@ namespace FoodLovers.Elastic.Recipe.Search.Services
             _elasticClient = provider.Client;
             _mapper = mapper;
         }
-        public async Task<IEnumerable<RecipeSearchModel>> SearchAsync(string indexName, string query)
+        public async Task<IEnumerable<RecipeSearchModel>> SearchAsync(string indexName, string searchTerm)
         {
             var searchResponse = await _elasticClient.SearchAsync<RecipeSearchModel>(s => s 
                 .Index(indexName)
@@ -28,13 +28,13 @@ namespace FoodLovers.Elastic.Recipe.Search.Services
                 .Size(50)
                 .Query(q => q
                     .MultiMatch(mp => mp
-                        .Query(query)
+                        .Query(searchTerm)
                         .Fields(f => f
                             .Fields(f1 => f1.Name, f2 => f2.Directions, f3 => f3.Ingredients, f4 => f4.Tags)))));
 
             var recipe = searchResponse.Documents;
 
-            return _mapper.Map<IEnumerable<RecipeSearchModel>>(recipe);
+            return recipe;
         }
 
         [Obsolete]

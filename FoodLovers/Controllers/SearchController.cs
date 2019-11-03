@@ -30,9 +30,9 @@ namespace FoodLovers.Api.Controllers
 
         [HttpPost]
         [SwaggerOperation("Search recipes multi match queries")]
-        public async Task<IActionResult> SearchRecipesMultiMatch(string query)
+        public async Task<IActionResult> SearchRecipesMultiMatch(string searchTerm)
         {
-            var result = await _searchService.SearchAsync(indexName, query);
+            var result = await _searchService.SearchAsync(indexName, searchTerm);
             return Ok(result);
         }
         
