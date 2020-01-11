@@ -27,25 +27,30 @@ namespace FoodLovers.Elastic.Sync.Services
 
         public async Task SyncData()
         {
-            var recepies = await _dbContext
-                .Recipes
+            //1290213 = 13x100000
+            for(int i = 1; i < 14; i++)
+            {
+                var recepies = await _dbContext
+                .Recipes.Where(r => r.Id <= 100000*i && r.Id > 100000*(i-1))
                 .Include(r => r.Ingredients)
                 .Include(r => r.RecipeTag)
                 .ThenInclude(rt => rt.Tag)
                 .ToListAsync();
 
-            var recepiesEsModel = _mapper.Map<List<RecipeSearchModel>>(recepies);
+                var recepiesEsModel = _mapper.Map<List<RecipeSearchModel>>(recepies);
 
-            var request = new BulkRequest(indexName)
-            {
-                Operations = new List<IBulkOperation>()
-            };
-                
-            var bulkOperations = recepiesEsModel.Select(r => new BulkIndexOperation<RecipeSearchModel>(r));
-            request.Operations.AddRange(bulkOperations);
+                var request = new BulkRequest(indexName)
+                {
+                    Operations = new List<IBulkOperation>()
+                };
 
-            await _elasticClient.BulkAsync(request);
+                var bulkOperations = recepiesEsModel.Select(r => new BulkIndexOperation<RecipeSearchModel>(r));
+                request.Operations.AddRange(bulkOperations);
 
+                await _elasticClient.BulkAsync(request);
+            }
+           
+            
             Console.WriteLine("Sync completed");
         }
 

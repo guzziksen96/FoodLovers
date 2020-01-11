@@ -12,15 +12,10 @@ namespace FoodLovers.Persistence.SeedData
         {
             _context = context;
         }
-        public void SeedData()
+  
+        public void AddRecipes()
         {
-            //AddRecipeTags();
-        }
-
-
-        private void AddRecipes()
-        {
-            var recipes = Builder<Recipe>.CreateListOfSize(20000)
+            var recipes = Builder<Recipe>.CreateListOfSize(50000)
                 .All()
                 .With(c => c.Id = 0)
                 .With(c => c.Name = Faker.Lorem.Sentence())
@@ -32,22 +27,22 @@ namespace FoodLovers.Persistence.SeedData
             _context.SaveChanges();
         }
 
-        private void AddRecipeTags()
+        public void AddRecipeTags()
         {
-            var i = 2;
-            var recipeTags = Builder<RecipeTag>.CreateListOfSize(20215)
+            var i = 15030;
+            var recipeTags = Builder<RecipeTag>.CreateListOfSize(50215)
                 .All()
                 .With(c => c.TagId = Faker.RandomNumber.Next(1, 16))
-                .With(c => c.RecipeId = i++)
+                .With(c => c.RecipeId = i+1)
                 .Build();
 
             _context.RecipeTags.AddRange(recipeTags);
             _context.SaveChanges();
         }
 
-        private void AddIngredients()
+        public void AddIngredients()
         {
-            var ingredients = Builder<Ingredient>.CreateListOfSize(10000)
+            var ingredients = Builder<Ingredient>.CreateListOfSize(50000)
                 .All()
                 .With(c => c.Name = Faker.Lorem.Sentence())
                 .With(c => c.Id = 0)
@@ -60,9 +55,17 @@ namespace FoodLovers.Persistence.SeedData
 
         private void AddRecipeIngredients()
         {
+            // 1 - 213 real recipies 
+            // 1 - 2268 real ingredients 
+            //to generate a random number between
             // ABS(CHECKSUM(NEWID()) % (@max - @min + 1)) + @min
+
+            // DECLARE @max int = 213
+            //DECLARE @min int = 1
+            //update dbo.Ingredients set RecipeId = ABS(CHECKSUM(NEWID()) % (@max - @min + 1)) + @min  where Id > 2268
+
         }
-        private void AddTags()
+        public void AddTags()
         {
             var tags = new List<Tag>
             {

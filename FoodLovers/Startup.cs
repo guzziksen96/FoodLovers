@@ -19,6 +19,8 @@ namespace FoodLovers.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<ElasticConnectionSettings>(Configuration.GetSection("ElasticConnectionSettings"));
+            services.AddSingleton(typeof(ElasticClientProvider));
             services.RegisterIoDependecies(Configuration);
             services.RegisterAutoMapperDependecies();
             services.RegisterContextDependencies(Configuration);
@@ -26,9 +28,7 @@ namespace FoodLovers.Api
             services.AddMediatRSettings();
             services.RegisterSwaggerDependencies();
             services.AddOptions();
-            services.Configure<ElasticConnectionSettings>(Configuration.GetSection("ElasticConnectionSettings"));
-            services.AddSingleton(typeof(ElasticClientProvider));
-
+            
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
